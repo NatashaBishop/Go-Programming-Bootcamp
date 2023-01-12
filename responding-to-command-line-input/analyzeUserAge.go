@@ -10,17 +10,19 @@ import (
 )
 
 func main() {
+	// Setup buffered reader that gets text from the keyboard
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("Please, input your age:")
-	age, err := reader.ReadString('\n')
-	if err != nil {
+	fmt.Println("Please, input your age:") //Ask user to input their age
+	age, err := reader.ReadString('\n') //Read the input till the new line appears
+	if err != nil { //handling error
 		log.Fatal(err)
 	}
-	age = strings.TrimSpace(age)
-	iAge, err := strconv.Atoi(age)
-	if err != nil {
+	age = strings.TrimSpace(age) //Get read of white spaces
+	iAge, err := strconv.Atoi(age) //Convert ACII input to interger
+	if err != nil { //handling error
 		log.Fatal(err)
 	}
+	//Analyze user input and respond according to given logic
 	if iAge < 5 {
 		fmt.Println("You are too young for school")
 	} else if iAge == 5 {
